@@ -17,7 +17,7 @@
 ## 🔧 Tech Stack
 
 - **Backend:** Python, Django
-- **Database:** SQLite (easily swappable with PostgreSQL or MySQL)
+- **Database:** MongoDB
 - **SMS API:** Twilio
 - **Task Scheduling:** Manual trigger (extendable to Celery or cron jobs)
 - **Environment Management:** `python-dotenv`
