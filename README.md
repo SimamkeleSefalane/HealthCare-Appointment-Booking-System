@@ -20,15 +20,21 @@ This is a simple web-based healthcare dashboard that allows doctors to manage pa
 
 ## Folder Structure
 
-├── index.html
-├── style.css
-├── script.js
+HealthCare-Appointment-Booking-System/
+├── public/
+│ ├── index.html # Main UI file
+│ ├── styles.css # Styling
+│ └── script.js # Client-side logic
 ├── server/
-│   ├── server.js
-│   └── models/
-│       └── patient.js
-├── .env
-├── README.md
+│ ├── server.js # Express server entry
+│ ├── db.js # MongoDB connection
+│ ├── models/
+│ │ └── appointmentModel.js # Mongoose model
+│ └── routes/
+│ └── api.js # API routes (appointments, patients, etc.)
+├── .env # Environment variables (Twilio, Mongo URI)
+├── package.json
+└── README.md
 
 ## How to Run
 
@@ -57,7 +63,7 @@ Dashboard View:
 
 ![Healthcare Dashboard UI](screenshot.png)
 
-## Author
+## Authors
 Simamkele Sefalane 
 Mosa Mokhaneli
 
