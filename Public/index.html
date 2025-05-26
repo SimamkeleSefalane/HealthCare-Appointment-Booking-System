@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-dark text-white border-end" id="sidebar-wrapper" style="width: 220px;">
+            <div class="sidebar-heading text-center py-4 fs-4 fw-bold border-bottom">Impilo Alerts</div>
+            <div class="list-group list-group-flush">
+                <a href="index.html" class="list-group-item list-group-item-action bg-dark text-white"><i
+                        class="bi bi-speedometer2 me-2"></i>Dashboard</a>
+                <a href="patients.html" class="list-group-item list-group-item-action bg-dark text-white"><i
+                        class="bi bi-people-fill me-2"></i>Patients</a>
+                <a href="appointments.html" class="list-group-item list-group-item-action bg-dark text-white"><i
+                        class="bi bi-calendar-check-fill me-2"></i>Appointments</a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark text-white"><i
+                        class="bi bi-gear-fill me-2"></i>Settings</a>
+            </div>
+        </div>
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper" class="w-100">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <span class="navbar-brand mb-0 h1">Welcome, Dr. Sefalane</span>
+                </div>
+            </nav>
+
+            <div class="container-fluid py-4">
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Patients</h5>
+                                <p class="card-text fs-3" id="totalPatients">24</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Upcoming Appointments</h5>
+                                <p class="card-text fs-3" id="upcomingAppointments">5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title">Confirmed Today</h5>
+                                <p class="card-text fs-3" id="confirmedToday">3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Status Chart -->
+                <div class="row mb-4">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Appointments by Status</h5>
+                                <canvas id="statusChart" height="180"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="d-flex gap-3">
+                    <a href="patients.html" class="btn btn-success"><i class="bi bi-person-plus-fill me-1"></i>Add
+                        Patient</a>
+                    <a href="appointment.html" class="btn btn-primary"><i class="bi bi-calendar-plus me-1"></i>Book
+                        Appointment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simulated data, to be replaced by backend fetch
+        const appointmentsByStatus = {
+            confirmed: 12,
+            pending: 5,
+            declined: 3
+        };
+
+        const ctx = document.getElementById('statusChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Confirmed', 'Pending', 'Declined'],
+                datasets: [{
+                    label: 'Appointments',
+                    data: [appointmentsByStatus.confirmed, appointmentsByStatus.pending, appointmentsByStatus.declined],
+                    backgroundColor: ['#198754', '#ffc107', '#dc3545']
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+        async function fetchDashboardSummary() {
+            try {
+                const res = await fetch('/api/dashboard/summary');
+                const data = await res.json();
+
+                document.getElementById('totalPatients').textContent = data.totalPatients;
+                document.getElementById('upcomingAppointments').textContent = data.upcomingAppointments;
+                document.getElementById('confirmedToday').textContent = data.confirmedToday;
+            } catch (err) {
+                console.error('Failed to fetch dashboard summary', err);
+            }
+        }
+
+        fetchDashboardSummary();
+    </script>
+
+    </script>
+</body>
+
+</html>
