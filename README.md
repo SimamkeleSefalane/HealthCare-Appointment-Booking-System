@@ -61,7 +61,8 @@ Dashboard View:
 
 ## Screenshot
 
-![Healthcare Dashboard UI](screenshot.png)
+![Healthcare Dashboard UI] ![Dashboard](https://github.com/user-attachments/assets/3b842a8f-84e8-49ee-a5db-cf4565bb459d)
+
 
 ## Authors
 Simamkele Sefalane 
