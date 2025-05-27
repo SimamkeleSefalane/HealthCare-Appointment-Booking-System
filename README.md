@@ -176,6 +176,7 @@ Dashboard View:
 
 ![Dashboard](https://github.com/user-attachments/assets/3b842a8f-84e8-49ee-a5db-cf4565bb459d)
 
+Deployed Link - https://healthtech-appointment-follow-up-reminder-system-syf7.vercel.app/
 
 ## Authors
 Simamkele Sefalane 
