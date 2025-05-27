@@ -1,4 +1,4 @@
-# Impilo Alert: Healthcare Appointment Reminder System
+# Impilo Alert: Healthtech Appointment Reminder System
 
 A full-stack healthcare appointment reminder application built with:
 
