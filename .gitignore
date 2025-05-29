@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+dist/
+.env
+.env.local
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+.idea/
+.vscode/
+
+# Vite cache
+.vite/
