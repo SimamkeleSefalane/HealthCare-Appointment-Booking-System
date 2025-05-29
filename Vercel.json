@@ -1,22 +1,7 @@
-{
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist",
-        "cleanDistDir": true
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/dist/$1",
-      "headers": {
-        "Cache-Control": "public, max-age=0"
-      }
-    }
-  ]
+"scripts": {
+  "start": "vite",
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "serve": "vite preview"
 }
