@@ -8,11 +8,14 @@
         "distDir": "dist"
       }
     }
+  ],
+  "routes": [
+    {
+      "src": "/.*",
+      "dest": "/dist/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0"
+      }
+    }
   ]
 }
-
-"routes": [{
-  "src": "/.*",
-  "dest": "/dist/index.html",
-  "headers": { "Cache-Control": "public, max-age=0" }
-}]
