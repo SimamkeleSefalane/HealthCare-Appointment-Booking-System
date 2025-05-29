@@ -8,20 +8,15 @@
         "distDir": "dist",
         "cleanDistDir": true
       }
-    },
-    {
-      "src": "server/index.js",
-      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "server/index.js"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/dist/$1"
+      "dest": "/dist/$1",
+      "headers": {
+        "Cache-Control": "public, max-age=0"
+      }
     }
   ]
 }
