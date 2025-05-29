@@ -12,6 +12,7 @@
     "server": "node server/index.js"
   },
   "dependencies": {
+    "react-icons": "^4.12.0"
     "@tailwindcss/vite": "^4.1.7",
     "class-variance-authority": "^0.7.1",
     "cors": "^2.8.5",
